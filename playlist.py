@@ -67,6 +67,19 @@ class Playlist:
             playlist_str += f"{song.title} by {song.artist} ({format_duration(song.seconds)})\n"
         return playlist_str
     
+    def long_songs(self):
+        long_songs_list = []
+        for song in self.songlist:
+            if song.long_song():
+                long_songs_list.append(song)
+        return long_songs_list
+    
+    def remove_song(self, title):
+        for song in self.songlist:
+            if song.title == title:
+                self.songlist.remove(song)
+                return f"{title} has been removed from the playlist."
+        return f"{title} not found in the playlist."
 
 def format_duration(seconds):
     return f"{seconds // 60}:{seconds % 60:02d}"
@@ -80,11 +93,20 @@ song_1 = Song("Dance The Night Away", "Van Halen", 188)
 song_2 = Song("Take The Money And Run", "Steve Miller Band", 125)
 song_3 = Song("(Dont Fear) The Reaper", "Blue Oyster Cult", 308)
 song_4 = Song("Take It Easy","Eagles",211)
+song_5 = Song("Hotel California", "Eagles", 391)
+song_6 = Song("Bohemian Rhapsody", "Queen", 354)
+
 
 playlist_1.songlist.append(song_1)
 playlist_1.songlist.append(song_2)
 playlist_1.songlist.append(song_3)
 playlist_1.songlist.append(song_4)
+playlist_1.songlist.append(song_5)
+playlist_1.songlist.append(song_6)
 
 playlist_1.shuffle_playlist()
+print(playlist_1.remove_song("Take It Easy"))
 print(playlist_1)
+print("Long songs in the playlist:")
+for song in playlist_1.long_songs():
+    print(f" - {song}")

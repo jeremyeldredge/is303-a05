@@ -4,6 +4,7 @@ responsibilities                                  | collaborators
 knows playlist name                               |
 tracks the songs in the playlist                  |  song
 can add a song                                    |  song
+can remove a song                                 |  song
 can calculate total duration                      |  song
 can find the longest song                         |  song
 can display full playlist                         |  song
